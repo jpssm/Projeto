@@ -1,0 +1,828 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.40.0 -->
+<interface>
+  <requires lib="gtk+" version="3.24"/>
+  <object class="GtkListStore" id="Códigos de Erro">
+    <columns>
+      <!-- column-name Códigos -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">Bits de Paridade</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">CRC</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Hamming</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkListStore" id="Enquadramento">
+    <columns>
+      <!-- column-name NRZ -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">Contagem de bytes</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">FLAGS de bytes</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">FLAGS de bits</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkAdjustment" id="Escala_frequencia">
+    <property name="lower">1</property>
+    <property name="upper">14400</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="Escala_tamanho_quadro">
+    <property name="lower">64</property>
+    <property name="upper">1518</property>
+    <property name="value">64</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="Escala_tempo">
+    <property name="upper">100</property>
+    <property name="step-increment">0.0001</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkListStore" id="Paridade">
+    <columns>
+      <!-- column-name Códigos -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">Bit 0 Par</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Bit 0 Impar</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Bit 1 Par</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Bit 1 Impar</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkListStore" id="Tipos_codificacao">
+    <columns>
+      <!-- column-name NRZ -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">NRZ-Polar</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Machester</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Bipolar</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkListStore" id="Tipos_modulação">
+    <columns>
+      <!-- column-name NRZ -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">ASK</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">FSK</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">8QAM</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkWindow" id="Janela_Transmissor">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="title" translatable="yes">Transmissor</property>
+    <property name="resizable">False</property>
+    <child>
+      <object class="GtkFixed" id="Layout_Janela_Transmissor">
+        <property name="width-request">770</property>
+        <property name="height-request">990</property>
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <child>
+          <object class="GtkFrame" id="Frame_Codificação">
+            <property name="name">Modulação Digital</property>
+            <property name="width-request">600</property>
+            <property name="height-request">220</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label-xalign">0</property>
+            <property name="shadow-type">in</property>
+            <child>
+              <object class="GtkAlignment">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="left-padding">12</property>
+                <child>
+                  <object class="GtkFixed" id="fixes_codificacao">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <child>
+                      <object class="GtkDrawingArea" id="grafico_codificação">
+                        <property name="width-request">540</property>
+                        <property name="height-request">150</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                      </object>
+                      <packing>
+                        <property name="x">20</property>
+                        <property name="y">5</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBox" id="cbox_codificacao">
+                        <property name="width-request">100</property>
+                        <property name="height-request">12</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="tooltip-markup" translatable="yes">NRZ
+Machester
+Bipolar</property>
+                        <property name="model">Tipos_codificacao</property>
+                        <property name="has-entry">True</property>
+                        <property name="entry-text-column">0</property>
+                        <child internal-child="entry">
+                          <object class="GtkEntry">
+                            <property name="can-focus">False</property>
+                            <property name="text" translatable="yes">NRZ-Polar</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="x">340</property>
+                        <property name="y">160</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="Label_combo_box_Codificação">
+                        <property name="width-request">100</property>
+                        <property name="height-request">20</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Tipo de Codifiacação</property>
+                      </object>
+                      <packing>
+                        <property name="x">200</property>
+                        <property name="y">165</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkRadioButton" id="radio_button_codificacao">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="receives-default">False</property>
+                        <property name="active">True</property>
+                        <property name="draw-indicator">True</property>
+                        <property name="group">radio_button_modulacao</property>
+                      </object>
+                      <packing>
+                        <property name="x">20</property>
+                        <property name="y">165</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel" id="Label_Codificação">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Codificação Digital</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">30</property>
+            <property name="y">15</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFrame" id="Frame_Modulação">
+            <property name="width-request">600</property>
+            <property name="height-request">220</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label-xalign">0</property>
+            <property name="shadow-type">in</property>
+            <child>
+              <object class="GtkAlignment">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="left-padding">12</property>
+                <child>
+                  <object class="GtkFixed" id="Layout_Frame_Modulação">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <child>
+                      <object class="GtkLabel" id="Label_combo_box_Modulação">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Tipo de Modulação</property>
+                      </object>
+                      <packing>
+                        <property name="x">200</property>
+                        <property name="y">165</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBox" id="cbox_modulacao">
+                        <property name="width-request">100</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="tooltip-markup" translatable="yes">NRZ
+Machester
+Bipolar</property>
+                        <property name="model">Tipos_modulação</property>
+                        <property name="has-entry">True</property>
+                        <property name="entry-text-column">0</property>
+                        <child internal-child="entry">
+                          <object class="GtkEntry">
+                            <property name="can-focus">False</property>
+                            <property name="text" translatable="yes">ASK</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="x">340</property>
+                        <property name="y">160</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkDrawingArea" id="grafico_modulação">
+                        <property name="width-request">540</property>
+                        <property name="height-request">150</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                      </object>
+                      <packing>
+                        <property name="x">20</property>
+                        <property name="y">5</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkRadioButton" id="radio_button_modulacao">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="receives-default">False</property>
+                        <property name="active">True</property>
+                        <property name="draw-indicator">True</property>
+                        <property name="group">radio_button_codificacao</property>
+                      </object>
+                      <packing>
+                        <property name="x">20</property>
+                        <property name="y">165</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel" id="Label_Modulação">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Modulação por Portadora</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">30</property>
+            <property name="y">246</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFrame">
+            <property name="width-request">600</property>
+            <property name="height-request">135</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label-xalign">0</property>
+            <property name="shadow-type">in</property>
+            <child>
+              <object class="GtkAlignment">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="left-padding">12</property>
+                <child>
+                  <object class="GtkFixed">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <child>
+                      <object class="GtkComboBox" id="cbox_protocolo">
+                        <property name="width-request">100</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="model">Enquadramento</property>
+                        <property name="has-entry">True</property>
+                        <property name="entry-text-column">0</property>
+                        <child internal-child="entry">
+                          <object class="GtkEntry">
+                            <property name="can-focus">False</property>
+                            <property name="text" translatable="yes">Contagem de bytes</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="x">85</property>
+                        <property name="y">20</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Protocolo</property>
+                      </object>
+                      <packing>
+                        <property name="x">10</property>
+                        <property name="y">25</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Tamanho máximo</property>
+                      </object>
+                      <packing>
+                        <property name="x">10</property>
+                        <property name="y">80</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSpinButton" id="spin_tamanho_quadro">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="adjustment">Escala_tamanho_quadro</property>
+                      </object>
+                      <packing>
+                        <property name="x">135</property>
+                        <property name="y">75</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Bytes</property>
+                      </object>
+                      <packing>
+                        <property name="x">265</property>
+                        <property name="y">84</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkTextView" id="text_bits_head">
+                        <property name="width-request">150</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="editable">False</property>
+                        <property name="cursor-visible">False</property>
+                        <property name="input-purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="x">400</property>
+                        <property name="y">25</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Head</property>
+                      </object>
+                      <packing>
+                        <property name="x">350</property>
+                        <property name="y">25</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Tail</property>
+                      </object>
+                      <packing>
+                        <property name="x">350</property>
+                        <property name="y">80</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkTextView" id="text_bits_tail">
+                        <property name="width-request">150</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="editable">False</property>
+                        <property name="cursor-visible">False</property>
+                        <property name="input-purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="x">400</property>
+                        <property name="y">80</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Enquadramento</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">30</property>
+            <property name="y">480</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFrame">
+            <property name="width-request">600</property>
+            <property name="height-request">190</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label-xalign">0</property>
+            <property name="shadow-type">in</property>
+            <child>
+              <object class="GtkAlignment">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="left-padding">12</property>
+                <child>
+                  <object class="GtkFixed">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Código</property>
+                      </object>
+                      <packing>
+                        <property name="x">10</property>
+                        <property name="y">19</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBox" id="cbox_codigo">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="model">Códigos de Erro</property>
+                        <property name="has-entry">True</property>
+                        <property name="entry-text-column">0</property>
+                        <child internal-child="entry">
+                          <object class="GtkEntry">
+                            <property name="can-focus">False</property>
+                            <property name="text" translatable="yes">Hamming</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="x">80</property>
+                        <property name="y">15</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Polinômio</property>
+                      </object>
+                      <packing>
+                        <property name="x">320</property>
+                        <property name="y">20</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Num bits paridade</property>
+                      </object>
+                      <packing>
+                        <property name="x">320</property>
+                        <property name="y">75</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="entry_polinomio">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="editable">False</property>
+                        <property name="input-purpose">digits</property>
+                      </object>
+                      <packing>
+                        <property name="x">400</property>
+                        <property name="y">15</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Paridade</property>
+                      </object>
+                      <packing>
+                        <property name="x">10</property>
+                        <property name="y">75</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBox" id="cbox_paridade">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="model">Paridade</property>
+                        <property name="has-entry">True</property>
+                        <property name="entry-text-column">0</property>
+                        <child internal-child="entry">
+                          <object class="GtkEntry">
+                            <property name="can-focus">False</property>
+                            <property name="text" translatable="yes">Bit 0 Par</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="x">80</property>
+                        <property name="y">65</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkTextView" id="text_paridade">
+                        <property name="width-request">100</property>
+                        <property name="height-request">30</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="editable">False</property>
+                        <property name="cursor-visible">False</property>
+                      </object>
+                      <packing>
+                        <property name="x">459</property>
+                        <property name="y">70</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="width-request">73</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Bits (EDAC)</property>
+                        <property name="wrap">True</property>
+                      </object>
+                      <packing>
+                        <property name="x">10</property>
+                        <property name="y">125</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScrolledWindow">
+                        <property name="width-request">450</property>
+                        <property name="height-request">25</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="shadow-type">in</property>
+                        <child>
+                          <object class="GtkTextView" id="text_bits_EDAC">
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="editable">False</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="x">100</property>
+                        <property name="y">115</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Detecção e Correção de Erros</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">30</property>
+            <property name="y">630</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale" id="scale_tempo">
+            <property name="height-request">300</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="orientation">vertical</property>
+            <property name="adjustment">Escala_tempo</property>
+            <property name="inverted">True</property>
+            <property name="round-digits">4</property>
+            <property name="digits">4</property>
+          </object>
+          <packing>
+            <property name="x">665</property>
+            <property name="y">250</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="width-request">100</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">Frequancia (Hz)</property>
+          </object>
+          <packing>
+            <property name="x">650</property>
+            <property name="y">25</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSpinButton" id="spin_frequencia">
+            <property name="width-request">60</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="input-purpose">number</property>
+            <property name="orientation">vertical</property>
+            <property name="adjustment">Escala_frequencia</property>
+            <property name="value">1</property>
+          </object>
+          <packing>
+            <property name="x">670</property>
+            <property name="y">55</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">Tempo</property>
+          </object>
+          <packing>
+            <property name="x">675</property>
+            <property name="y">220</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">Mensagem</property>
+          </object>
+          <packing>
+            <property name="x">35</property>
+            <property name="y">846</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="width-request">70</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">Bits</property>
+          </object>
+          <packing>
+            <property name="x">40</property>
+            <property name="y">910</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="botao_enviar">
+            <property name="label" translatable="yes">ENVIAR</property>
+            <property name="width-request">100</property>
+            <property name="height-request">40</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="relief">half</property>
+          </object>
+          <packing>
+            <property name="x">650</property>
+            <property name="y">860</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">Tempo de Bit</property>
+          </object>
+          <packing>
+            <property name="x">660</property>
+            <property name="y">610</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkTextView" id="text_tempo_bit">
+            <property name="width-request">100</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="editable">False</property>
+            <property name="justification">center</property>
+          </object>
+          <packing>
+            <property name="x">655</property>
+            <property name="y">635</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">Bits por Símbolo</property>
+          </object>
+          <packing>
+            <property name="x">650</property>
+            <property name="y">695</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkTextView" id="text_bit_simbolo">
+            <property name="width-request">100</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="editable">False</property>
+            <property name="justification">center</property>
+          </object>
+          <packing>
+            <property name="x">655</property>
+            <property name="y">725</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow">
+            <property name="width-request">500</property>
+            <property name="height-request">25</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="shadow-type">in</property>
+            <child>
+              <object class="GtkTextView" id="text_mensagem">
+                <property name="width-request">500</property>
+                <property name="height-request">25</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="resize-mode">queue</property>
+                <property name="wrap-mode">char</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">125</property>
+            <property name="y">835</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow">
+            <property name="width-request">500</property>
+            <property name="height-request">25</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="shadow-type">in</property>
+            <child>
+              <object class="GtkTextView" id="text_bits">
+                <property name="width-request">500</property>
+                <property name="height-request">25</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="resize-mode">queue</property>
+                <property name="editable">False</property>
+                <property name="wrap-mode">char</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">125</property>
+            <property name="y">900</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkTextBuffer"/>
+</interface>
