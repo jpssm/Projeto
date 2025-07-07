@@ -14,10 +14,13 @@ bitstream bytes_counting_framing(bitstream load, int max_frame_size){
     bitstream frames; //Fluxo de bits com todos os frames
     unsigned byte_counting = load.size()/8;
     max_frame_size-=2;//Reserva 2 bytes para o cabeçalho
-    if(byte_counting <= max_frame_size-2){ //Se é possível alocar em um único quadro
+
+    //Se é possível alocar em um único quadro
+    if(byte_counting <= max_frame_size){ 
         insert_bits(byte_counting+2, 16, &load);
         frames.insert(frames.end(), load.begin(), load.end());
     }
+    //Caso contrário monta vários quadros
     else{
         int remaing_bits; //Contagem de bits restantes
         //Monta um quadro para cada sequencia com tamanho maximo de bits
@@ -31,7 +34,7 @@ bitstream bytes_counting_framing(bitstream load, int max_frame_size){
                 frames.insert(frames.end(), load.begin() + i_frame, 
                             load.begin() + i_frame + max_frame_size*8);
             }
-            else{ //Se é o último quadro
+            else{ //Caso contrário monta um quadro com o restante de bits
                 insert_bits(remaing_bits/8, 16, &load);
                 frames.insert(frames.end(), load.begin() + i_frame, 
                             load.begin() + i_frame + remaing_bits);
@@ -39,4 +42,15 @@ bitstream bytes_counting_framing(bitstream load, int max_frame_size){
         }
     }
     return frames;
+}
+
+
+//Desenquadra o fluxo de bits;
+bitstream bytes_counting_unframing(bitstream frames){
+    bitstream load;
+    int i = 0;
+    int frame_size ;
+    while(i < frames.size()){
+        frame_size = 
+    }
 }
