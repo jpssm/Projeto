@@ -2,7 +2,7 @@
 
 using namespace std;
 
-
+//Codificação em bts
 bitstream string_to_bits(string text){
     bitstream bits;
     for(char c:text){
@@ -13,6 +13,7 @@ bitstream string_to_bits(string text){
     return bits;
 }
 
+//Decodificação de bits
 string bits_to_string(bitstream bits){
     string text;
     char c;
@@ -25,4 +26,15 @@ string bits_to_string(bitstream bits){
         text.push_back(c);
     }
     return text;
+}
+
+
+//Impressão de fluxo de bits
+string bitstream_printing(bitstream bits){
+    string s;
+    for(bit b:bits){
+        s.push_back((char)(b+48)); //0 ASCII = 48
+    }
+    s.push_back(0); // \0 no final para indicar fim da string
+    return s;
 }

@@ -10,4 +10,6 @@ bitstream string_to_bits(string text);
 
 string bits_to_string(bitstream bits);
 
+string bitstream_printing(bitstream bits);
+
 #endif

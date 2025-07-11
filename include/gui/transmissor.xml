@@ -159,12 +159,13 @@
 Machester
 Bipolar</property>
                         <property name="model">Tipos_codificacao</property>
+                        <property name="active">0</property>
                         <property name="has-entry">True</property>
                         <property name="entry-text-column">0</property>
                         <child internal-child="entry">
                           <object class="GtkEntry">
                             <property name="can-focus">False</property>
-                            <property name="text" translatable="yes">NRZ-Polar</property>
+                            <property name="text" translatable="yes">Bipolar</property>
                           </object>
                         </child>
                       </object>
@@ -254,6 +255,7 @@ Bipolar</property>
 Machester
 Bipolar</property>
                         <property name="model">Tipos_modulação</property>
+                        <property name="active">0</property>
                         <property name="has-entry">True</property>
                         <property name="entry-text-column">0</property>
                         <child internal-child="entry">
@@ -329,33 +331,12 @@ Bipolar</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <child>
-                      <object class="GtkComboBox" id="cbox_protocolo">
-                        <property name="width-request">100</property>
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="model">Enquadramento</property>
-                        <property name="has-entry">True</property>
-                        <property name="entry-text-column">0</property>
-                        <child internal-child="entry">
-                          <object class="GtkEntry">
-                            <property name="can-focus">False</property>
-                            <property name="text" translatable="yes">Contagem de bytes</property>
-                          </object>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="x">85</property>
-                        <property name="y">20</property>
-                      </packing>
-                    </child>
-                    <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">Protocolo</property>
                       </object>
                       <packing>
-                        <property name="x">10</property>
                         <property name="y">25</property>
                       </packing>
                     </child>
@@ -363,11 +344,11 @@ Bipolar</property>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">Tamanho máximo</property>
+                        <property name="label" translatable="yes">Tam máximo</property>
                       </object>
                       <packing>
-                        <property name="x">10</property>
-                        <property name="y">80</property>
+                        <property name="x">295</property>
+                        <property name="y">25</property>
                       </packing>
                     </child>
                     <child>
@@ -379,8 +360,8 @@ Bipolar</property>
                         <property name="adjustment">Escala_tamanho_quadro</property>
                       </object>
                       <packing>
-                        <property name="x">135</property>
-                        <property name="y">75</property>
+                        <property name="x">390</property>
+                        <property name="y">20</property>
                       </packing>
                     </child>
                     <child>
@@ -390,58 +371,63 @@ Bipolar</property>
                         <property name="label" translatable="yes">Bytes</property>
                       </object>
                       <packing>
-                        <property name="x">285</property>
-                        <property name="y">84</property>
+                        <property name="x">540</property>
+                        <property name="y">25</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkTextView" id="text_bits_head">
-                        <property name="width-request">150</property>
+                      <object class="GtkComboBox" id="cbox_protocolo">
                         <property name="visible">True</property>
-                        <property name="can-focus">True</property>
-                        <property name="editable">False</property>
-                        <property name="cursor-visible">False</property>
-                        <property name="input-purpose">digits</property>
+                        <property name="can-focus">False</property>
+                        <property name="model">Enquadramento</property>
+                        <property name="active">0</property>
+                        <property name="has-entry">True</property>
+                        <property name="entry-text-column">0</property>
+                        <child internal-child="entry">
+                          <object class="GtkEntry">
+                            <property name="can-focus">False</property>
+                            <property name="text" translatable="yes">Contagem de bytes</property>
+                          </object>
+                        </child>
                       </object>
                       <packing>
-                        <property name="x">400</property>
-                        <property name="y">25</property>
+                        <property name="x">69</property>
+                        <property name="y">20</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScrolledWindow">
+                        <property name="width-request">500</property>
+                        <property name="height-request">25</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="shadow-type">in</property>
+                        <child>
+                          <object class="GtkTextView" id="text_bits_frames">
+                            <property name="width-request">500</property>
+                            <property name="height-request">25</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="editable">False</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="x">75</property>
+                        <property name="y">63</property>
                       </packing>
                     </child>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">Head</property>
+                        <property name="label" translatable="yes">Bit
+Frames</property>
+                        <property name="justify">center</property>
                       </object>
                       <packing>
-                        <property name="x">350</property>
-                        <property name="y">25</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">Tail</property>
-                      </object>
-                      <packing>
-                        <property name="x">350</property>
-                        <property name="y">80</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkTextView" id="text_bits_tail">
-                        <property name="width-request">150</property>
-                        <property name="visible">True</property>
-                        <property name="can-focus">True</property>
-                        <property name="editable">False</property>
-                        <property name="cursor-visible">False</property>
-                        <property name="input-purpose">digits</property>
-                      </object>
-                      <packing>
-                        <property name="x">400</property>
-                        <property name="y">80</property>
+                        <property name="x">9</property>
+                        <property name="y">70</property>
                       </packing>
                     </child>
                   </object>
@@ -494,6 +480,7 @@ Bipolar</property>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="model">Códigos de Erro</property>
+                        <property name="active">0</property>
                         <property name="has-entry">True</property>
                         <property name="entry-text-column">0</property>
                         <child internal-child="entry">
@@ -558,6 +545,7 @@ Bipolar</property>
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="model">Paridade</property>
+                        <property name="active">0</property>
                         <property name="has-entry">True</property>
                         <property name="entry-text-column">0</property>
                         <child internal-child="entry">

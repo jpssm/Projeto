@@ -37,6 +37,14 @@ extern GtkWidget *text_tempo_bit;
 extern GtkWidget *text_bit_simbolo;
 extern GtkWidget *text_mensagem;
 extern GtkWidget *text_bits;
+extern GtkWidget *text_bits_frames;
+
+// GtkListStore
+//extern GtkWidget *list_códigos_de_erro;
+//extern GtkWidget *list_enquadramento;
+//extern GtkWidget *list_paridade;
+//extern GtkWidget *list_codificacao;
+//extern GtkWidget *list_modulacao;
 
 //GtkEntry 
 extern GtkWidget *entry_polinomio;
@@ -57,5 +65,4 @@ gboolean is_radio_button_active(GtkWidget *widget);
 string get_text_view_value(GtkWidget *widget);
 void set_text_view_value(GtkWidget *widget, string text);
 string get_combo_box_value(GtkWidget *widget);
-
 #endif
